@@ -74,7 +74,7 @@ class ms2guploader
     }
 
     $this->config['sourceProperties'] = $this->mediaSource->properties;
-    $this->config['close_all_message'] = $this->modx->lexicon('ms2guploader_message_close_all');
+    //$this->config['close_all_message'] = $this->modx->lexicon('ms2guploader_message_close_all');
     $this->config['cssUrl'] = $this->config['cssUrl'] . 'web/';
 
 	// ms2guploader
