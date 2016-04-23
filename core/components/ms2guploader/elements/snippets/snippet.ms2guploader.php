@@ -4,7 +4,7 @@ $ms2guploader = $modx->getService('ms2guploader', 'ms2guploader', $modx->getOpti
 
 
 // Проверка на сущестование ресурса
-$pid = !empty($_REQUEST['id']) ? (integer)$_REQUEST['id'] : 0;
+if(empty($pid)) $pid = !empty($_REQUEST['id']) ? (integer)$_REQUEST['id'] : 0;
 if($pid != 0) $resource = $modx->getObject($class, $pid);
 
 // Поиск и подсчет уже созданных файлов
@@ -15,6 +15,7 @@ if($resource && !$resource->deleted){
     $q->where(array('resource_id' => 0, 'parent' => 0, 'createdby' => $modx->user->id));
 }
 $q->sortby('rank', 'ASC');
+$q->limit($uploadLimit);
 $collection = $modx->getIterator('msResourceFile', $q);
 $count = $modx->getCount('msResourceFile', $q);
 $data = $ms2guploader->initialize($modx->context->key, $count);

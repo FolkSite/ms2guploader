@@ -74,7 +74,7 @@ class ms2guploader
     }
 
     $this->config['sourceProperties'] = $this->mediaSource->properties;
-    //$this->config['close_all_message'] = $this->modx->lexicon('ms2guploader_message_close_all');
+    $this->config['close_all_message'] = $this->modx->lexicon('ms2guploader_message_close_all');
     $this->config['cssUrl'] = $this->config['cssUrl'] . 'web/';
 
 	// ms2guploader
@@ -227,7 +227,7 @@ class ms2guploader
    */
   public function error($message = '', $data = array(), $placeholders = array())
   {
-    header('HTTP/1.1 400 Bad Request');
+    //header('HTTP/1.1 400 Bad Request');
     $messageTranslation = $this->modx->lexicon($message, $placeholders);
     if($messageTranslation){
       $message = $messageTranslation;
@@ -237,7 +237,7 @@ class ms2guploader
     , 'message' => $message
     , 'data' => $data
     );
-    $this->modx->log(modX::LOG_LEVEL_ERROR, $message);
+    //$this->modx->log(modX::LOG_LEVEL_ERROR, $message);
     return $this->config['json_response']
       ? $this->modx->toJSON($response)
       : $response;

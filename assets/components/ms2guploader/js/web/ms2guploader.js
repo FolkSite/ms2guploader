@@ -137,6 +137,7 @@ var ms2guploader = {
           },
           Error: function (up, err) {
 		  	 ms2guploader.message.error(err.message);
+		  	 console.log(err);
           }
         }
       });
@@ -215,6 +216,7 @@ var ms2guploader = {
         }
       }
       ,error: function (message) {
+	  console.log(message);
         if (message) {
           $.jGrowl(message, {
             theme: 'ms2gus-message-error'

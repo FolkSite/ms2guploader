@@ -18,9 +18,9 @@ class ms2guploaderProductFileDeleteProcessor extends modObjectProcessor {
   /** {@inheritDoc} */
   public function process() {
     $id = $this->getProperty('id');
-    /* @var msProductFile $file */
+	/* @var msProductFile $file */
     if (!$file = $this->modx->getObject($this->classKey, $id)) {
-      return $this->failure($this->modx->lexicon('ms2guploader_err_file_ns'));
+      return $this->failure('Файл не найден');
     }
     /* elseif ($file->createdby != $this->modx->user->id) {
       return $this->failure($this->modx->lexicon('ms2guploader_err_file_owner'));
